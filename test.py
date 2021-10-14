@@ -8,12 +8,11 @@ RelayTop = [21, 20, 26]
 RelayLow = [16, 19, 13]
 
 
-
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-GPIO.setup(RelayA, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(RelayB, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(RelayTop, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(RelayLow, GPIO.OUT, initial=GPIO.LOW)
 time.sleep(2)
 try:
   while True:
@@ -37,4 +36,3 @@ except:
   GPIO.cleanup()
 
 
-  
