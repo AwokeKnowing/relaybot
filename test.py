@@ -26,10 +26,10 @@ def applyRelayStates():
 
   try:
     GPIO.output([RelayChannels[i] 
-                  for i in range(RelayChannels) if RelayStates[i]==0], 
+                  for i in range(6) if RelayStates[i]==0], 
                 GPIO.LOW)
     GPIO.output([RelayChannels[i] 
-                  for i in range(RelayChannels) if RelayStates[i]==1], 
+                  for i in range(6) if RelayStates[i]==1], 
                 GPIO.HIGH)
   except:
     GPIO.cleanup()
