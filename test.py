@@ -26,7 +26,8 @@ def program(screen):
       motors(0,0)
     elif char == curses.KEY_DOWN: 
       print("down")
-    else: snake.update()
+    else: 
+      pass
     time.sleep(0.1)
 
 
