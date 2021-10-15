@@ -7,7 +7,7 @@ from relaymotors import motors
 
 
 
-def program(screen)
+def program(screen):
 
   curses.curs_set(0)
   window.nodelay(True)
