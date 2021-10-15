@@ -9,38 +9,32 @@ import time
 ## Config #################################################################
 
 # this is visually the relays, eg pin 16 is for the upper-right relay
-RelayTop = [13, 19, 16]
-RelayLow = [26, 20, 21]
+RelayChannels = [13, 19, 16,
+                 26, 20, 21]
 
-# this is the index into array above of where the motors are wired
+# this is the index into RelayChannels array 
 # you can invert the order (eg 2,1) to change polarity/direction of motors
-MotorARelays = [2,1]
-MotorBRelays = [5,4]
+MotorLRelays = [5,4]
+MotorRRelays = [2,1]
 
 ###########################################################################
 ###########################################################################
 
-MotorAStateOff = [0,0]
-MotorAStateFwd = [1,0]
-MotorAStateRev = [0,1]
-
-MotorBStateOff = [0,0]
-MotorBStateFwd = [1,0]
-MotorBStateRev = [0,1]
-
-RelayChannels = [*RelayLow,*RelayTop]
+# activation pattern of MotorRelays corresponding to direction
+# ie it requires 2 relays per direction
+MotorStateOff = [0,0]
+MotorStateFwd = [1,0]
+MotorStateRev = [0,1]
 
 # initial states
-RelayStates = [0,0,0,0,0,0]
-MotorADir = 0
-MotorBDir = 0
+RelayStates = [0,0,0,0,0,0]  # 1 for high 0 for low
+MotorLDir = 0                # current state of motor
+MotorRDir = 0                # dir can be on of: -1 0 1 
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-GPIO.setup(RelayTop, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(RelayLow, GPIO.OUT, initial=GPIO.LOW)                              
-time.sleep(1)
+GPIO.setup(RelayChannels, GPIO.OUT, initial=GPIO.LOW)
 
 
 def getRelayStates():
@@ -57,31 +51,34 @@ def applyRelayStates():
     #time.sleep(.005) #states take 5ms to apply 
   except:
     GPIO.cleanup()
+    return False
+
+  return True
 
 
-def motors(adir, bdir):
-  MotorADir = adir
-  MotorBDir = bdir 
+def motors(left, right):
+  MotorLDir = left
+  MotorRDir = right 
 
-  if(adir == 0):
-    RelayStates[MotorARelays[0]] = MotorAStateOff[0]
-    RelayStates[MotorARelays[1]] = MotorAStateOff[1]
-  if(adir == 1):
-    RelayStates[MotorARelays[0]] = MotorAStateFwd[0]
-    RelayStates[MotorARelays[1]] = MotorAStateFwd[1]
-  if(adir == -1):
-    RelayStates[MotorARelays[0]] = MotorAStateRev[0]
-    RelayStates[MotorARelays[1]] = MotorAStateRev[1]
+  if(left == 0):
+    RelayStates[MotorLRelays[0]] = MotorStateOff[0]
+    RelayStates[MotorLRelays[1]] = MotorStateOff[1]
+  if(left == 1):
+    RelayStates[MotorLRelays[0]] = MotorStateFwd[0]
+    RelayStates[MotorLRelays[1]] = MotorStateFwd[1]
+  if(left == -1):
+    RelayStates[MotorLRelays[0]] = MotorStateRev[0]
+    RelayStates[MotorLRelays[1]] = MotorStateRev[1]
 
-  if(bdir == 0):
-    RelayStates[MotorBRelays[0]] = MotorBStateOff[0]
-    RelayStates[MotorBRelays[1]] = MotorBStateOff[1]
-  if(bdir == 1):
-    RelayStates[MotorBRelays[0]] = MotorBStateFwd[0]
-    RelayStates[MotorBRelays[1]] = MotorBStateFwd[1]
-  if(bdir == -1):
-    RelayStates[MotorBRelays[0]] = MotorBStateRev[0]
-    RelayStates[MotorBRelays[1]] = MotorBStateRev[1]
+  if(right == 0):
+    RelayStates[MotorRRelays[0]] = MotorStateOff[0]
+    RelayStates[MotorRRelays[1]] = MotorStateOff[1]
+  if(right == 1):
+    RelayStates[MotorRRelays[0]] = MotorStateFwd[0]
+    RelayStates[MotorRRelays[1]] = MotorStateFwd[1]
+  if(right == -1):
+    RelayStates[MotorRRelays[0]] = MotorStateRev[0]
+    RelayStates[MotorRRelays[1]] = MotorStateRev[1]
   
   applyRelayStates()
 
