@@ -31,7 +31,7 @@ def applyRelayStates():
     GPIO.output([RelayChannels[i] 
                   for i in range(6) if RelayStates[i]==1], 
                 GPIO.HIGH)
-    time.sleep(.005)
+    time.sleep(.002)
   except:
     GPIO.cleanup()
 
