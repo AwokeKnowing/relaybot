@@ -15,6 +15,8 @@ def program(screen):
 
   while True:
     char = screen.getch()
+    curses.flushinp() 
+
     if char == 113: break  # q
     elif char == curses.KEY_RIGHT: 
       print("right")
