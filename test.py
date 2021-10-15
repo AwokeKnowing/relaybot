@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding:UTF-8 -*-
 
 import RPi.GPIO as GPIO
@@ -6,6 +6,7 @@ import time
 
 RelayLow = [21, 20, 26]
 RelayTop = [16, 19, 13]
+
 
 
 GPIO.setmode(GPIO.BCM)
@@ -17,19 +18,19 @@ time.sleep(2)
 try:
   while True:
     print("turn on low")
-    GPIO.output(RelayLow, GPIO.HIGH)
+    GPIO.output(RelayLow[0], GPIO.HIGH)
     time.sleep(1)
     
     print("turn off low")
-    GPIO.output(RelayLow, GPIO.LOW)
+    GPIO.output(RelayLow[0], GPIO.LOW)
     time.sleep(1)
     
     print("turn on top")
-    GPIO.output(RelayTop, GPIO.HIGH)
+    GPIO.output(RelayTop[0], GPIO.HIGH)
     time.sleep(1)
     
     print("turn off top")
-    GPIO.output(RelayTop, GPIO.LOW)
+    GPIO.output(RelayTop[0], GPIO.LOW)
     time.sleep(3)
 
 except:
