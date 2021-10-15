@@ -17,15 +17,24 @@ def program(screen):
     if char == 113: break  # q
     elif char == curses.KEY_RIGHT: 
       print("right")
+      motors(1,-1)
+      time.sleep(.2)
+      motors(0,0)
     elif char == curses.KEY_LEFT: 
       print("left")
+      motors(-1,1)
+      time.sleep(.2)
+      motors(0,0)
     elif char == curses.KEY_UP: 
       print("up")
       motors(1,1)
-      time.sleep(1)
+      time.sleep(.2)
       motors(0,0)
     elif char == curses.KEY_DOWN: 
       print("down")
+      motors(-1,-1)
+      time.sleep(.2)
+      motors(0,0)
     else: 
       pass
     time.sleep(0.1)
