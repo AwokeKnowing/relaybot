@@ -18,19 +18,19 @@ time.sleep(2)
 try:
   while True:
     print("turn on low")
-    GPIO.output(RelayLow[0], GPIO.HIGH)
+    GPIO.output(RelayLow[1], GPIO.HIGH)
     time.sleep(1)
     
     print("turn off low")
-    GPIO.output(RelayLow[0], GPIO.LOW)
+    GPIO.output(RelayLow[1], GPIO.LOW)
     time.sleep(1)
     
     print("turn on top")
-    GPIO.output(RelayTop[0], GPIO.HIGH)
+    GPIO.output(RelayTop[1], GPIO.HIGH)
     time.sleep(1)
     
     print("turn off top")
-    GPIO.output(RelayTop[0], GPIO.LOW)
+    GPIO.output(RelayTop[1], GPIO.LOW)
     time.sleep(3)
 
 except:
