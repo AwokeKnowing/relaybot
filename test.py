@@ -14,8 +14,8 @@ RelayLow = [26, 20, 21]
 
 # this is the index into array above of where the motors are wired
 # you can invert the order (eg 2,1) to change polarity/direction of motors
-MotorARelays = [1,2]
-MotorBRelays = [4,5]
+MotorARelays = [2,1]
+MotorBRelays = [5,4]
 
 ###########################################################################
 ###########################################################################
