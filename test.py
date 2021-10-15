@@ -10,7 +10,7 @@ from relaymotors import motors
 def program(screen):
 
   curses.curs_set(0)
-  window.nodelay(True)
+  screen.nodelay(True)
 
   while True:
     char = screen.getch()
