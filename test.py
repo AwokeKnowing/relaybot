@@ -37,12 +37,12 @@ def applyRelayStates():
 
 
 applyRelayStates()
-time.sleep(2)
+#time.sleep(2)
 RelayStates=[1,0,1,0,1,0]
 applyRelayStates()
-time.sleep(2)
+#time.sleep(2)
 RelayStates=[0,1,0,1,0,1]
 applyRelayStates()
-time.sleep(2)
+#time.sleep(2)
 RelayStates=[0,0,0,0,0,0]
 applyRelayStates()
